@@ -3,7 +3,6 @@ import GenreCard, { type Genre } from '../components/GenreCard';
 import CartIcon from '../components/CartIcon'; 
 import Header from '../components/Header'; 
 import { Link } from 'react-router-dom';
-// 💡 ИМПОРТ MOCK-ДАННЫХ
 import { mockGenres } from '../mockData';
 
 const API_BASE_URL = '/api/v1/genres';
@@ -23,8 +22,6 @@ const GenreList: React.FC = () => {
 
     try {
       const response = await fetch(url);
-      
-      // 🛑 ОБРАБОТКА ОШИБКИ СЕРВЕРА (например, 500)
       if (!response.ok) {
         setGenres(mockGenres);
       }
@@ -35,16 +32,12 @@ const GenreList: React.FC = () => {
       if (Array.isArray(genresArray)) {
           setGenres(genresArray as Genre[]);
       } else {
-          // Неверный формат ответа, но бэкенд жив. 
-          // Если бэкенд жив, не используем mock, чтобы не скрыть проблему.
           setGenres([]); 
           console.error("API response is not an object with a 'data' array:", apiResponse); 
           throw new Error("Неверный формат данных от сервера. Ожидался массив услуг в поле 'data'.");
       }
     } catch (e) {
-      // 🛑 ОБРАБОТКА СЕТЕВОЙ ОШИБКИ (бэкенд не запущен)
       if (e instanceof Error) {
-        // Если ошибка произошла не из-за response.ok (например, Network Error при неработающем бэкенде)
         if (!e.message.includes('статус')) {
             setGenres(mockGenres);
             setLoading(false);
@@ -52,7 +45,6 @@ const GenreList: React.FC = () => {
         }
       } else {
       }
-      // Если запрос был с поиском, mock-данные не используются
       if (!searchQuery) {
           setGenres(mockGenres);
       }
@@ -84,7 +76,6 @@ const GenreList: React.FC = () => {
       
         <main>
             <div className="main-content">
-                {/* Хлебные крошки */}
                 <div className="genre-adress">
                     <Link to="/" className="adress-text" style={{ textDecoration: 'none' }}>
                         Главная/
@@ -97,12 +88,8 @@ const GenreList: React.FC = () => {
               <h1 className="page-title">Анализ текста</h1>
               
               <div className="search-section"> 
-                    {/* 1. Шапка поиска (Сверху) */}
                     <div className="search-label">Поиск по жанрам</div>
-                    
-                    {/* 2. Форма для поля ввода и кнопки (Ниже, в ряд) */}
                     <form onSubmit={handleSearchSubmit} className="search-input-wrapper">
-                        {/* Контейнер поля ввода занимает всю доступную ширину */}
                       <div className="search-container">
                         <input 
                           type="text" 
@@ -113,8 +100,7 @@ const GenreList: React.FC = () => {
                           onChange={handleSearchChange}
                         />
                       </div>
-                        
-                        {/* Кнопка поиска */}
+          
                         <button type="submit" className="search-button-icon">
                             <img src="/src/img/Search.png" alt="Поиск" />
                         </button>
@@ -124,7 +110,6 @@ const GenreList: React.FC = () => {
               {loading && <p style={{ marginTop: '20px' }}>Загрузка услуг...</p>}
 
               <div className="cards-container">
-                {/* Рендерим карточки независимо от ошибки, если genres не пуст (т.е. содержит mock-данные) */}
                 {!loading && genres.map((genre) => (
                   <GenreCard key={genre.GenreID} genre={genre} />
                 ))}

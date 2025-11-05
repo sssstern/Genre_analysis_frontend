@@ -10,14 +10,10 @@ export interface Genre {
 }
 
 const GenreCard: React.FC<{ genre: Genre }> = ({ genre }) => {
-  
-  // Получаем функцию обновления состояния корзины
   const { refreshStatus } = useAnalysisRequest(); 
   
   const handleAddToRequest = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // 💡 ИСПРАВЛЕННЫЙ API-ПУТЬ: POST /genres/add-to-analysis/:id
     const API_ADD_URL = `/api/v1/genres/add-to-analysis/${genre.GenreID}`; 
     
     try {
@@ -27,7 +23,6 @@ const GenreCard: React.FC<{ genre: Genre }> = ({ genre }) => {
 
         if (response.ok) {
             alert(`Услуга "${genre.GenreName}" успешно добавлена в заявку!`);
-            // 💡 КРИТИЧЕСКОЕ ИЗМЕНЕНИЕ: Вызываем refreshStatus для обновления счетчика
             refreshStatus(); 
         } else {
             const errorText = await response.text();

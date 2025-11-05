@@ -5,11 +5,9 @@ import useAnalysisRequest from '../hooks/useAnalysisRequest';
 const CartIcon: React.FC = () => {
     const { analysisID, count, loading } = useAnalysisRequest();
 
-    // analysisID === 0 означает, что нет активной заявки.
     const isCartActive = analysisID !== 0;
     const isCartEmpty = count === 0;
     
-    // Стиль для счетчика с явным указанием типа React.CSSProperties для устранения ошибки TypeScript
     const countStyle: React.CSSProperties = {
         position: 'absolute', 
         top: '0px', 
@@ -25,7 +23,6 @@ const CartIcon: React.FC = () => {
     };
 
     if (loading) {
-        // Заглушка, пока данные загружаются (неактивный вид)
         const loadingStyle: React.CSSProperties = {
             opacity: 0.5, 
             cursor: 'wait', 
@@ -38,8 +35,7 @@ const CartIcon: React.FC = () => {
             </div>
         );
     }
-    
-    // 🛑 Логика деактивации: Если isCartActive = false, рендерим неактивный DIV без возможности перехода
+
     if (!isCartActive) {
         const inactiveStyle: React.CSSProperties = {
             opacity: 0.4, 
@@ -55,7 +51,7 @@ const CartIcon: React.FC = () => {
             >
                 <img src="/src/img/RequestIcon.png" alt="Корзина (неактивна)" className="cart-image" />
                 
-                {/* Счетчик не должен отображаться, если корзина неактивна, но мы оставляем проверку на count > 0 */}
+                
                 {isCartEmpty ? null : (
                     <div className="cart-count" style={countStyle}>
                         {count}
@@ -65,11 +61,10 @@ const CartIcon: React.FC = () => {
         );
     }
     
-    // Если analysisID > 0, корзина активна и ведет по правильному маршруту
     const cartLink = `/genreanalysisrequest/${analysisID}`; 
     
     const activeLinkStyle: React.CSSProperties = {
-        position: 'relative' // Добавлен для корректного позиционирования счетчика
+        position: 'relative' 
     };
 
     return (
@@ -80,8 +75,6 @@ const CartIcon: React.FC = () => {
             style={activeLinkStyle}
         >
             <img src="/src/img/RequestIcon.png" alt="Корзина" className="cart-image" />
-            
-            {/* Отображение счетчика (только если не пустая) */}
             {isCartEmpty ? null : (
                 <div 
                     className="cart-count" 

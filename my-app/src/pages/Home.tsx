@@ -7,55 +7,51 @@ const Home: React.FC = () => {
       <div 
         className="container"
         style={{
-            // 🛑 ИСПРАВЛЕНИЕ 3: Фон для всей страницы
-            backgroundImage: '/src/img/Default.png', // Используем ваше изображение
-            backgroundSize: 'cover', // Растягиваем на всю область
+            backgroundImage: '/src/img/Default.png', 
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            minHeight: '100vh', // Занимаем всю высоту экрана
+            minHeight: '100vh', 
             width: '100%',
             margin: 0,
             padding: 0,
         }}
     >
-        <Header />
-      
-          <main 
+         <Header />
+    <main 
                 className="main-content" 
                 style={{
-                    // 🛑 ИСПРАВЛЕНИЕ 2: Центрирование всего блока и текста
-                    flexGrow: 1, // Занимаем все доступное пространство
+                    
+                    flexGrow: 1, 
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center', // Центрирование по вертикали
-                    alignItems: 'center',     // Центрирование по горизонтали
+                    justifyContent: 'center', 
+                    alignItems: 'center',    
                     textAlign: 'center', 
-                    paddingTop: '0', // Убираем фиксированный отступ
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Полупрозрачный фон для читаемости текста
+                    paddingTop: '0',
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
                 }}
             >
-                <h1 className="page-title" style={{color: '#990000', textShadow: '1px 1px 2px white'}}>
+                 <h1 className="page-title" style={{color: '#990000', textShadow: '1px 1px 2px white'}}>
                     Добро пожаловать
                 </h1>
-                <p style={{fontSize: '24px', marginTop: '20px', color: '#000000', textShadow: '1px 1px 2px white'}}>
+                <p style={{fontSize: '24px', marginTop: '20px', color: '#000000', textShadow: '1px 1px 2px white'}}>
                     Приложение анализа принадлежности текста к жанру. Нажмите, чтобы перейти к жанрам:
                 </p>
-                <Link to="/genres" style={{
-                    display: 'inline-block', 
-                    marginTop: '30px', 
-                    padding: '10px 20px', 
-                    backgroundColor: '#990000', 
-                    color: 'white', 
-                    textDecoration: 'none', 
-                    borderRadius: '5px'
-                }}>
-                    Перейти к списку жанров
-                </Link>
-          </main>
-          
-          {/* 🛑 ИСПРАВЛЕНИЕ 1: Футер удален */}
-    </div>
-  );
+                <Link to="/genres" style={{
+                    display: 'inline-block', 
+                    marginTop: '30px', 
+                    padding: '10px 20px', 
+                    backgroundColor: '#990000', 
+                    color: 'white', 
+                    textDecoration: 'none', 
+                    borderRadius: '5px'
+                    }}>
+                    sПерейти к списку жанров
+                 </Link>
+            </main>
+    </div>
+     );
 };
 
 export default Home;

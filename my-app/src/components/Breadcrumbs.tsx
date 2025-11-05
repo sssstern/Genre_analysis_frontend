@@ -8,7 +8,6 @@ const pathMap: { [key: string]: string } = {
 
 const CustomBreadcrumbs: React.FC = () => {
   const location = useLocation();
-  // Разделяем путь и убираем пустые элементы (первый '/')
   const pathnames = location.pathname.split('/').filter((x) => x);
 
   const breadcrumbs = [{ name: 'Главная', path: '/' }];
@@ -16,11 +15,9 @@ const CustomBreadcrumbs: React.FC = () => {
 
   pathnames.forEach((value, index) => {
     currentPath += `/${value}`;
-    const name = pathMap[value] || value; // Если это ID, то будет сам ID
+    const name = pathMap[value] || value;
     
-    // 💡 Логика: если это последний элемент и он не в карте (т.е. ID), это Детали
     if (index === pathnames.length - 1 && !pathMap[value]) {
-        // Здесь можно сделать запрос на получение имени по ID, но для простоты используем ID
         breadcrumbs.push({ name: `Детали (${name})`, path: currentPath });
     } else {
         breadcrumbs.push({ name: name, path: currentPath });

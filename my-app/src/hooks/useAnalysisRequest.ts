@@ -10,15 +10,12 @@ const useAnalysisRequest = () => {
     });
 
     useEffect(() => {
-        // Подписываемся на изменения в хранилище
         const unsubscribe = subscribe(setStatus);
         return () => {
-            // Отписываемся при размонтировании
             unsubscribe();
         };
     }, []); 
 
-    // Возвращаем функцию принудительного обновления для использования в GenreCard
     return { ...status, refreshStatus };
 };
 
