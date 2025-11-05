@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@vitejs/plugin-react-swc": "^4.2.0",
+    "bootstrap": "^5.3.8",
+    "from": "^0.1.7",
+    "import": "^0.0.6",
+    "react": "^19.2.0",
+    "react-bootstrap": "^2.10.10",
+    "react-router-dom": "^7.9.5"
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3"
+  }
+}
