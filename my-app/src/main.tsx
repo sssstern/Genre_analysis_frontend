@@ -7,8 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/main.css'; 
 import './styles/genre.css'; 
 import './styles/analysis.css';
-import './img/Home.png'
-//import './styles/adaptive.css';
+import backImg from './img/back.jpg';
+import homeImg from './img/Home.png';
+import requestImg from './img/RequestIcon.png';
+import searchImg from './img/Search.png';
+import defaultImg from './img/Default.png';
+console.log(backImg, homeImg, requestImg, searchImg, defaultImg);
 
 import { Provider } from 'react-redux';
 import store from './store.ts'; // Импорт store
