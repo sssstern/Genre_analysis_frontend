@@ -31,7 +31,7 @@ const CartIcon: React.FC = () => {
 
         return (
             <div className="cart" style={loadingStyle}>
-                <img src="/src/img/RequestIcon.png" alt="Корзина (загрузка)" className="cart-image" />
+                <img src="/img/RequestIcon.png" alt="Корзина (загрузка)" className="cart-image" />
             </div>
         );
     }

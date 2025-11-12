@@ -92,7 +92,7 @@ const GenreList: React.FC = () => {
                       </div>
           
                         <button type="submit" className="search-button-icon">
-                            <img src="/src/img/Search.png" alt="Поиск" />
+                            <img src="/img/Search.png" alt="Поиск" />
                         </button>
                   </form>
                 </div>

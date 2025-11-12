@@ -6,7 +6,7 @@ const Home: React.FC = () => {
       <div
         className="container"
         style={{
-            backgroundImage: 'url(/assets/back.jpg)',
+            backgroundImage: 'url(/img/back.jpg)',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             minHeight: '100vh',
