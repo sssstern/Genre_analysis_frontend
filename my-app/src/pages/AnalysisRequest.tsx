@@ -6,30 +6,20 @@ import Header from '../components/Header';
 
 const API_BASE_URL = '/api/v1/text-analysis-requests'; 
 
-// --- Вспомогательный компонент для отображения одного жанра ---
-const GenreItem: React.FC<{ item: FlatGenreItem; index: number }> = ({ item, index }) => {
+const GenreItem: React.FC<{ item: FlatGenreItem; index: number }> = ({ item }) => {
     
-    // 🛑 ИСПРАВЛЕНИЕ: Добавляем состояние для отслеживания ошибки загрузки изображения
     const [hasImageLoadError, setHasImageLoadError] = useState(false);
     
     const DEFAULT_IMAGE_PATH = '/src/img/Default.png'; 
 
-    // Используем useMemo для определения источника изображения
     const primarySource = useMemo(() => {
-        // Убедимся, что URL из API используется, только если он выглядит как полный URL
-        // (например, содержит "http" или "/").
         const url = item.GenreImageURL ? item.GenreImageURL.trim() : '';
         if (url && (url.startsWith('http') || url.startsWith('/'))) {
-             // Используем URL из API, если он не пуст
              return url;
         }
-        // В противном случае, сразу используем дефолтный путь.
         return DEFAULT_IMAGE_PATH;
     }, [item.GenreImageURL]);
 
-
-    // Источник, который будет использоваться в теге <img>
-    // Если произошла ошибка, принудительно устанавливаем дефолтный путь.
     const imageSource = hasImageLoadError ? DEFAULT_IMAGE_PATH : primarySource;
 
     // Обработка остальных полей

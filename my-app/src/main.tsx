@@ -7,10 +7,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/main.css'; 
 import './styles/genre.css'; 
 import './styles/analysis.css';
+//import './styles/adaptive.css';
 
-// Убедитесь, что элемент с ID 'root' существует
+import { Provider } from 'react-redux';
+import store from './store.ts'; // Импорт store
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
 );
+// В конце main.tsx
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/Genre_analysis_frontend/sw.js');
+  });
+}

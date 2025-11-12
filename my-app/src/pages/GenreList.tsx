@@ -1,18 +1,21 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import GenreCard, { type Genre } from '../components/GenreCard';
-import CartIcon from '../components/CartIcon'; 
-import Header from '../components/Header'; 
+import CartIcon from '../components/CartIcon';
+import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import { mockGenres } from '../mockData';
+import { useDispatch, useSelector } from 'react-redux'; // Импорты из react-redux
+import { setSearchTerm, setFilterQuery, selectSearchTerm, selectFilterQuery } from '../slices/filterSlice'; // Actions и selectors
 
 const API_BASE_URL = '/api/v1/genres';
 
 const GenreList: React.FC = () => {
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-    
-  const [searchTerm, setSearchTerm] = useState<string>(''); 
-  const [filterQuery, setFilterQuery] = useState<string>(''); 
+  const dispatch = useDispatch();
+  const searchTerm = useSelector(selectSearchTerm); // Чтение из Redux
+  const filterQuery = useSelector(selectFilterQuery); // Чтение из Redux
+  
+  const [genres, setGenres] = React.useState<Genre[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   const fetchGenres = useCallback(async (searchQuery: string) => {
     setLoading(true);
@@ -30,23 +33,14 @@ const GenreList: React.FC = () => {
       const genresArray = apiResponse.data;
 
       if (Array.isArray(genresArray)) {
-          setGenres(genresArray as Genre[]);
+        setGenres(genresArray as Genre[]);
       } else {
-          setGenres([]); 
-          console.error("API response is not an object with a 'data' array:", apiResponse); 
-          throw new Error("Неверный формат данных от сервера. Ожидался массив услуг в поле 'data'.");
+        setGenres([]); 
+        throw new Error("Неверный формат данных от сервера.");
       }
     } catch (e) {
-      if (e instanceof Error) {
-        if (!e.message.includes('статус')) {
-            setGenres(mockGenres);
-            setLoading(false);
-            return;
-        }
-      } else {
-      }
       if (!searchQuery) {
-          setGenres(mockGenres);
+        setGenres(mockGenres);
       }
     } finally {
       setLoading(false);
@@ -54,26 +48,22 @@ const GenreList: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    fetchGenres(filterQuery);
-  }, [filterQuery, fetchGenres]); 
+    fetchGenres(filterQuery); // Используем filterQuery из Redux
+  }, [filterQuery, fetchGenres]);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+    dispatch(setSearchTerm(event.target.value)); // Dispatch в Redux
   };
     
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setFilterQuery(searchTerm);
+    dispatch(setFilterQuery(searchTerm)); // При submit — обновляем filterQuery из searchTerm
   };
   
   return (
     <div className="container"> 
         <Header />
-      
-        <footer>
-          <CartIcon />
-         </footer>
-      
+        <CartIcon />
         <main>
             <div className="main-content">
                 <div className="genre-adress">
@@ -96,7 +86,7 @@ const GenreList: React.FC = () => {
                           name="searchbygenrename" 
                           className="search-input" 
                           placeholder="Введите текст для поиска" 
-                          value={searchTerm}
+                          value={searchTerm} // Значение из Redux
                           onChange={handleSearchChange}
                         />
                       </div>
@@ -121,4 +111,3 @@ const GenreList: React.FC = () => {
 };
 
 export default GenreList;
-

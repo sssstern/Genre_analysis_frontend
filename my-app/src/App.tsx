@@ -7,7 +7,7 @@ import AnalysisRequest from './pages/AnalysisRequest';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Genre_analysis_frontend">
       <Routes>
         <Route path="/" element={<Home />} />
         

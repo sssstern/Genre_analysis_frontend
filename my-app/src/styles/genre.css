@@ -88,3 +88,81 @@
     height: 100%;
     object-fit: cover;
 }
+
+
+/* === АДАПТИВНОСТЬ=== */
+
+
+@media (max-width: 750px) {
+    .genre-adress {
+        padding: 10px 15px; 
+        height: auto; 
+    }
+
+    .genre-main {
+        margin-left: 15px; 
+        margin-right: 15px;
+        padding-bottom: 30px; 
+    }
+
+    .genre-content {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .genre-info {
+        padding: 20px 0 !important; 
+        width: 100% !important; 
+        height: auto; 
+    }
+
+    .genre-subtitle {
+        font-size: 28px; 
+        line-height: 32px;
+        text-align: center; 
+    }
+
+    .card-keywords {
+        font-size: 16px; 
+        max-height: none !important;
+    }
+
+    .genre-image {
+        width: 100% !important; 
+        height: auto !important; 
+        padding: 20px 0; 
+    }
+
+    .adress-text {
+        font-size: 24px; 
+    }
+}
+
+@media (min-width: 750px) and (max-width: 1200px) {
+    
+    .adress-text {
+        font-size: 24px; 
+    }
+
+    .genre-main {
+        margin-left: 100px; 
+        margin-right: 100px;
+    }
+
+    .genre-info {
+        width: 400px !important; 
+        padding: 30px 0 !important;
+    }
+
+    .genre-subtitle {
+        font-size: 32px;
+    }
+
+    .genre-image {
+        width: 400px !important;
+        padding: 30px 0;
+    }
+}
+
+@media (min-width: 1200) {
+}

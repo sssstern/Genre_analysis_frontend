@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useAnalysisRequest from '../hooks/useAnalysisRequest'; 
+//import useAnalysisRequest from '../hooks/useAnalysisRequest'; 
 
 export interface Genre {
   GenreID: number;
@@ -10,7 +10,7 @@ export interface Genre {
 }
 
 const GenreCard: React.FC<{ genre: Genre }> = ({ genre }) => {
-  const { refreshStatus } = useAnalysisRequest(); 
+  /*const { refreshStatus } = useAnalysisRequest(); 
   
   const handleAddToRequest = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const GenreCard: React.FC<{ genre: Genre }> = ({ genre }) => {
             alert("Произошла неизвестная ошибка при добавлении в заявку.");
         }
     }
-  };
+  };*/
 
   return (
     <div className="card-wrapper">
@@ -54,12 +54,14 @@ const GenreCard: React.FC<{ genre: Genre }> = ({ genre }) => {
             Подробнее
           </Link>
           
+          {/* 
           <form className="add-to-analysis-form" onSubmit={handleAddToRequest}>
             <input type="hidden" name="genre_id" value={genre.GenreID} />
             <button type="submit" className="add-to-analysis-btn">
               Добавить в заявку
             </button>
           </form>
+           */}
         </div>
       </div>
     </div>
