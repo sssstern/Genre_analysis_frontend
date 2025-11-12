@@ -8,6 +8,7 @@ import './styles/main.css';
 import './styles/genre.css'; 
 import './styles/analysis.css';
 //import './styles/adaptive.css';
+import './img/Home.png'
 
 import { Provider } from 'react-redux';
 import store from './store.ts'; // Импорт store
