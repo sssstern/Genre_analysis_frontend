@@ -50,7 +50,7 @@ const CartIcon: React.FC = () => {
                 title="Для просмотра заявки необходимо сначала добавить услугу"
                 style={inactiveStyle} 
             >
-                <img src="/src/img/RequestIcon.png" alt="Корзина (неактивна)" className="cart-image" />
+                <img src="/Genre_analysis_frontend/img/RequestIcon.png" alt="Корзина (неактивна)" className="cart-image" />
                 
                 
                 {isCartEmpty ? null : (
@@ -77,7 +77,7 @@ const CartIcon: React.FC = () => {
             title={`Просмотреть заявку #${analysisID}`}
             style={activeLinkStyle}
         >
-            <img src="/src/img/RequestIcon.png" alt="Корзина" className="cart-image" />
+            <img src="/Genre_analysis_frontend/img/RequestIcon.png" alt="Корзина" className="cart-image" />
             {isCartEmpty ? null : (
                 <div 
                     className="cart-count" 
