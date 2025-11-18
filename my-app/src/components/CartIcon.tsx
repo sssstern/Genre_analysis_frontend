@@ -44,6 +44,7 @@ const CartIcon: React.FC = () => {
         };
 
         return (
+            <footer>
             <div 
                 className="cart" 
                 title="Для просмотра заявки необходимо сначала добавить услугу"
@@ -58,6 +59,7 @@ const CartIcon: React.FC = () => {
                     </div>
                 )}
             </div>
+            </footer>
         );
     }
     
@@ -68,6 +70,7 @@ const CartIcon: React.FC = () => {
     };
 
     return (
+        <footer>
         <Link 
             to={cartLink} 
             className="cart"
@@ -84,6 +87,7 @@ const CartIcon: React.FC = () => {
                 </div>
             )}
         </Link>
+        </footer>
     );
 };
 

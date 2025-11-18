@@ -1,57 +1,53 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../components/Header'; 
+import Header from '../components/Header';
 
 const Home: React.FC = () => {
    return (
-      <div 
+      <div
         className="container"
         style={{
-            backgroundImage: '/src/img/Default.png', 
-            backgroundSize: 'cover',
+            backgroundImage: 'url(/src/img/back.jpg)',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            minHeight: '100vh', 
+            minHeight: '100vh',
             width: '100%',
             margin: 0,
             padding: 0,
         }}
-    >
+      >
          <Header />
-    <main 
-                className="main-content" 
-                style={{
-                    
-                    flexGrow: 1, 
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center', 
-                    alignItems: 'center',    
-                    textAlign: 'center', 
-                    paddingTop: '0',
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
-                }}
-            >
-                 <h1 className="page-title" style={{color: '#990000', textShadow: '1px 1px 2px white'}}>
-                    Добро пожаловать
-                </h1>
-                <p style={{fontSize: '24px', marginTop: '20px', color: '#000000', textShadow: '1px 1px 2px white'}}>
-                    Приложение анализа принадлежности текста к жанру. Нажмите, чтобы перейти к жанрам:
-                </p>
-                <Link to="/genres" style={{
-                    display: 'inline-block', 
-                    marginTop: '30px', 
-                    padding: '10px 20px', 
-                    backgroundColor: '#990000', 
-                    color: 'white', 
-                    textDecoration: 'none', 
-                    borderRadius: '5px'
-                    }}>
-                    sПерейти к списку жанров
-                 </Link>
-            </main>
-    </div>
-     );
+         <main
+            className="main-content"
+            style={{
+                flexGrow: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                padding: '20px',
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                maxWidth: '800px',
+                margin: '0 auto',
+            }}
+         >
+            <h1 className="page-title" style={{color: '#990000'}}>
+               Определение жанра текста по лексическим маркерам
+            </h1>
+            <p style={{
+                fontSize: '18px',
+                marginTop: '20px',
+                color: 'rgba(0, 0, 0)',
+                lineHeight: '1.6'
+            }}>
+               Cервис помогает определить жанровую принадлежность текста на основе анализа лексических маркеров.
+               Каждый жанр имеет свой уникальный набор ключевых слов, которые служат маркерами для точного определения.
+               Вы можете отправить заявку на анализ текста, и мы рассчитаем вероятностную принадлежность вашего текста к тому или иному жанру,
+               основываясь на частотности использования ключевых маркерных слов.
+            </p>
+         </main>
+      </div>
+   );
 };
 
 export default Home;

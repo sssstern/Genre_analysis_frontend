@@ -69,11 +69,7 @@ const GenreList: React.FC = () => {
   return (
     <div className="container"> 
         <Header />
-      
-        <footer>
-          <CartIcon />
-         </footer>
-      
+        <CartIcon />
         <main>
             <div className="main-content">
                 <div className="genre-adress">
