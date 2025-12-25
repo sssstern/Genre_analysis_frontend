@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schema.tauri.app/config/2.0.0",
+  "productName": "GenreAnalysis",
+  "version": "0.1.0",
+  "identifier": "com.genreanalysis.app",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devUrl": "https://localhost:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Анализ жанров",
+        "width": 1000,
+        "height": 700,
+        "resizable": true,
+        "fullscreen": false,
+        "devtools": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: filesystem: ws: wss: http: https: ;",
+      "capabilities": [
+        {
+          "identifier": "main-capability",
+          "description": "Basic capabilities for main window (fetch to API)",
+          "windows": ["main"],
+          "local": true,
+          "permissions": [
+            "core:default"
+          ],
+          "scopes": [
+            {
+              "identifier": "http:default",
+              "allow": [
+                {
+                  "url": "https://172.20.10.7:8443/**"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {}
+}
